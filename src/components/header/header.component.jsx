@@ -1,12 +1,18 @@
 import React from 'react';
+import {BrowserRouter as Router,Route, NavLink } from 'react-router-dom'
 import './header.styles.scss';
+
+import AboutPage  from '../../pages/about/about.component';
+import HomePage from '../../pages/homepage/homepage.component';
+
 import logo from '../../assets/eka_logo.png';
 import { ReactComponent as SearchIcon } from '../../assets/search.svg';
 import { ReactComponent as UserIcon } from '../../assets/user.svg';
 import {ReactComponent as CartIcon} from '../../assets/bag.svg';
 
 
-const Header = () => (
+const Header = () => {
+  return(
   <div className='header'>
     <div className='headerFlexItem select'>
       <select name="currency" className='currencySelector'>
@@ -17,26 +23,31 @@ const Header = () => (
         <option value='INR'>CAD</option>
       </select>
     </div>
-
+    <Router>
     <nav className='mainNavBar'>
       <ul className="horizontalList">
         <li className='horizontalListItem'>
-          <a href=''>ABOUT US</a>
+          <NavLink to='/about-us' activeClassName='selectedLink'>ABOUT US
+          </NavLink>
         </li>
         <li className='horizontalListItem'>
-          <a href=''>NEW ARRIVALS</a>
+          <NavLink to='/new-arrivals'>NEW ARRIVALS</NavLink>
         </li>
         <li className='horizontalListItem'>
-          <a href=''>SHOP ALL</a>
+          <NavLink to='/shop'>SHOP ALL</NavLink>
         </li>
         <li className='horizontalListItem'>
-          <a href=''>STOCKISTS</a>
+          <NavLink to='/stockists'>STOCKISTS</NavLink>
         </li>
         <li className='horizontalListItem'>
-          <a href=''>CONTACT US</a>
+          <NavLink to='contact-us'>CONTACT US</NavLink>
         </li>
       </ul>
     </nav>
+     <Route exact path='/' component={HomePage} />
+     <Route exact path='/about-us' component={AboutPage} />
+
+    </Router>
 
     <div className='headerFlexItem logoContainer'>
     <img src={logo} alt="Logo" className="logo"/>
@@ -49,6 +60,8 @@ const Header = () => (
     </div>
 
   </div>
-);
+ );
+
+}
 
 export default Header;

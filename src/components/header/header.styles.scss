@@ -92,7 +92,7 @@
 
        .horizontalListItem{
          display: inline-block;
-         margin: 0 21px  0 21px;
+         margin: 0 21px 0px 21px;
          color: #454545;
          font-weight: 400;
          font-style: normal;
@@ -101,7 +101,34 @@
          letter-spacing: 0.2em;
          cursor: pointer;
          text-transform: uppercase;
-       }
+         padding-bottom: 10px;
+
+         }
+
+         .selectedLink{
+           position: relative;
+           display: block;
+
+           &::after{
+             position: absolute;
+             display: block;
+             padding-top: 20px;
+             content: '';
+             width: 0;
+             height: 2px;
+             right: 0;
+             background: #454545;
+             visibility: hidden;
+             transition: all 0.3s ease-in-out;
+           }
+
+           &:hover::after{
+             visibility: visible;
+             width: 100%;
+             left: 0;
+             background: #454545;
+           }
+         }
      }
 
    }
